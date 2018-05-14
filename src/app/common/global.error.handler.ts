@@ -1,4 +1,4 @@
-import { ErrorHandler, Injectable, Injector } from '@angular/core';
+import { ErrorHandler, Injectable } from '@angular/core';
 import * as StackTrace from 'stacktrace-js';
 
 @Injectable()
@@ -12,11 +12,14 @@ export class GlobalErrorHandler implements ErrorHandler {
                 .map(function (sf) {
                     return sf.toString();
                 }).join('\n');
+            // You can handle the error or pass it to a display here in different ways
+            // eg: Alert the error
+            // alert(message)
+            // console.log(message) to view error message in console
             console.log({ message, stack: stackString });
         });
 
         throw error;
     }
-
 
 }
