@@ -1,0 +1,42 @@
+
+<div *ngIf="configService.showFilter" class='notes-filter'>
+    <span class="fa fa-search"></span>
+    <input type="text" [(ngModel)]="filterText" id="txtFilter" placeholder="Enter Filter">
+    <span *ngIf="filterText" (click)="filterClear()">
+        <i class="fas fa-times-circle"></i>
+    </span>
+</div>
+
+<div class="notes-wrapper">
+    <div *ngIf='displayData |  filterBy:filterText' >
+        <div class='year' [id]='year' *ngFor="let year of  getKeys(displayData)">
+            <div class='month' [id]='month+year.toString()' *ngFor="let month of getKeys(displayData[year])">
+                <div class='dayClass' [id]='date' *ngFor="let date of getKeys(displayData[year][month])">
+                    
+                    <div class='container' *ngFor="let data of displayData[year][month][date]">
+                        <div class='detailsTable'>
+                            <div class='iconCol'>
+                                <div class='detailsImage'>
+                                    <span class="imgSpan" ></span>
+                                </div>
+                            </div>
+                        <div class="detailsContainer" [id]="data.record[col].id" *ngFor="let col of getColumns(data)">
+                            <h4>
+                                <label>{{ data.record[col].displayName  }}</label>
+                                <div class='ellipsisLabel' *ngIf="isDate(data.record[col].data)">
+                                    {{convertDate(data.record[col].data)  | date:'d MMM yyyy h:mm aa' }}
+                                </div>
+                                <div class='ellipsisLabel' *ngIf="!isDate(data.record[col].data)">
+                                    {{ data.record[col].data }}
+                                </div>
+                            </h4>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

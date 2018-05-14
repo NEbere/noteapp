@@ -1,0 +1,25 @@
+<div class="month">
+    <ul class="header">
+        <li (click)="decrementYear()" class="prevYear"><button class='btn'>&#10094;&#10094;</button></li>
+        <li (click)="decrementMonth()" class="prev"><button class='btn'>&#10094;</button></li>
+        <li (click)="incrementYear()" class="nextYear"><button class='btn'>&#10095;&#10095;</button></li>
+        <li (click)="incrementMonth()" class="next"><button class='btn'>&#10095;</button></li>
+
+        <li class="year"> {{MonthNames[month]}}<span style="font-size:18px">{{year}}</span></li>
+    </ul>
+
+    <ul class="weekdays">
+        <li>Su</li>
+        <li>Mo</li>
+        <li>Tu</li>
+        <li>We</li>
+        <li>Th</li>
+        <li>Fr</li>
+        <li>Sa</li>
+
+    </ul>
+    <ul class="days">
+        <li (click)="dayClicked(day)" *ngFor="let day of days"> {{ day }}</li>
+    </ul>
+</div>
+

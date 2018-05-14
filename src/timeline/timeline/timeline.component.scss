@@ -1,0 +1,22 @@
+
+.noWrapLabel {
+    word-wrap: break-word;
+    -ms-word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    display: inline-flex;
+    flex-grow: 1;
+    color: #181e42;
+    line-height: 5pt;
+    letter-spacing: normal;
+    height: auto;
+    line-height: normal;
+}
+
